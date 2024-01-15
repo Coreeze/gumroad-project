@@ -1,0 +1,38 @@
+header {
+  display: flex;
+  justify-content: flex-start;
+  background-color: $color-grey;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.rating,
+.zoom-link,
+.instructions {
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.footer-button {
+  background-color: grey;
+  color: white;
+  padding: 10px;
+}
+
+.download-button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+}
+
+.author {
+  margin-top: 20px;
+}
