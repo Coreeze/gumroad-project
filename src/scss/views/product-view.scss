@@ -1,0 +1,131 @@
+.top-bar {
+  padding: 1rem;
+  background-color: $color-grey;
+}
+
+header {
+  display: grid;
+  grid-row: 1;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 1rem 8.75rem;
+  border-top: solid 0.0625rem $color-light-grey;
+  border-bottom: solid 0.0625rem $color-light-grey;
+  background-color: $color-grey;
+
+  .header-actions {
+    display: grid;
+    grid-template-columns: unset;
+    grid-auto-flow: column;
+    gap: 0.75rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 4rem max((100% - 71.25rem)/2, 4rem);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    grid-template-columns: 1fr auto;
+    grid-column: 1 / span 2;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  top: calc(100% - 29rem);
+  gap: 1rem;
+  // width: 19rem;
+  background-color: $color-black;
+  box-shadow: 0.25rem 0.25rem 0rem $color-white;
+  border: solid 0.0625rem $color-light-grey;
+  border-radius: 0.25rem;
+  z-index: 30;
+}
+
+.content-container {
+  display: grid;
+  padding: 1rem;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: $color-black;
+  color: $color-white;
+  gap: 1.5rem 4rem;
+  padding: 1rem;
+  align-items: flex-start;
+
+  .paragraph:nth-child(1) {
+    order: 2;
+  }
+
+  .paragraph:nth-child(2) {
+    order: 1;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 4rem max((100% - 71.25rem)/2, 4rem);
+    grid-template: auto/1fr 3fr;
+
+    .paragraph:nth-child(1) {
+      order: 1;
+    }
+
+    .paragraph:nth-child(2) {
+      order: 2;
+    }
+  }
+}
+
+.paragraph {
+  display: grid;
+  gap: 1rem;
+}
+
+.stack {
+  border: solid 0.0625rem $color-light-grey;
+  border-radius: 0.25rem;
+
+  span {
+    border-top: none;
+  }
+
+  .ratings-header {
+    padding: 1rem;
+    border-bottom: solid 0.0625rem $color-light-grey;
+  }
+
+  .ratings-comment {
+    padding: 1rem;
+  }
+
+  .description {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    padding: 1rem;
+
+    .details-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+.profile-pic {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}

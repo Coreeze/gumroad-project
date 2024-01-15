@@ -1,6 +1,6 @@
 @import "./colors.scss";
 @import "./components/buttons.scss";
-@import "./views/product.scss";
+@import "./views/product-view.scss";
 
 @font-face {
   font-family: "MabryPro";
@@ -17,12 +17,30 @@ body {
   font-family: "MabryPro";
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.App {
+  color: $color-white;
+  background-color: black;
+  flex-direction: column;
 }
 
-.App {
-  color: white;
-  background-color: black;
+h1 {
+  margin: 0px;
+  font-size: 2.2rem;
+}
+
+h3 {
+  margin: 0px;
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+#font-14px {
+  font-size: 14px;
+}
+
+#clickable {
+  cursor: pointer;
 }
