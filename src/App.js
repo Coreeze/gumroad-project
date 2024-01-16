@@ -14,9 +14,7 @@ import { COLORS } from "./utils/colors";
 import profile from "./images/ellie-horn.webp";
 
 const feedbackValidationSchema = yup.object({
-  comment: yup
-    .string("Enter comment")
-    .max(140, "Comment maximum length is 140 characters"),
+  comment: yup.string("Enter comment").max(140, "Comment limited to 140 chars"),
 });
 
 function App() {
@@ -104,6 +102,7 @@ function App() {
                 onChange={formik.handleChange}
                 error={formik.touched.comment && Boolean(formik.errors.comment)}
                 helperText={formik.touched.comment && formik.errors.comment}
+                inputProps={{ maxLength: 141 }}
                 sx={{
                   backgroundColor: COLORS.grey,
                   "& .MuiInputBase-input": {
@@ -121,6 +120,25 @@ function App() {
                   },
                 }}
               />
+              <div className="comment-indicator">
+                <CircularProgress
+                  variant="determinate"
+                  color="secondary"
+                  value={(formik.values.comment.length * 100) / 141}
+                  style={{
+                    color:
+                      formik.values.comment.length <= 140
+                        ? COLORS.white
+                        : COLORS.red,
+                    borderRadius: "50%",
+                    boxShadow: `inset 0 0 0 ${(9 / 44) * 120}px ${
+                      COLORS.lightGrey
+                    }`,
+                  }}
+                  thickness={4}
+                  size={30}
+                />
+              </div>
             </div>
             <div style={{ padding: "0 1rem 1rem " }}>
               <div className="button">Post comment</div>
