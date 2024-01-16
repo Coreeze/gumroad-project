@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import ReactStars from "react-rating-stars-component";
-import { FaApple, FaAndroid } from "react-icons/fa";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import { COLORS } from "./utils/colors";
 import profile from "./images/ellie-horn.webp";
@@ -71,7 +71,11 @@ function App() {
         </div>
       </header>
       <div className="content-container">
-        <div className="paragraph" id="font-14px">
+        <div
+          className="paragraph"
+          id="font-14px"
+          style={{ paddingRight: "0rem" }}
+        >
           <div className="stack">
             <div className="ratings-header">
               <div>Like it? Give it a rating:</div>
@@ -95,7 +99,7 @@ function App() {
                 name="comment"
                 id="comment"
                 className="comment"
-                placeholder="I love this product because..."
+                placeholder="I love this because..."
                 value={formik.values.comment}
                 onChange={formik.handleChange}
                 error={formik.touched.comment && Boolean(formik.errors.comment)}
@@ -118,6 +122,9 @@ function App() {
                 }}
               />
             </div>
+            <div style={{ padding: "0 1rem 1rem " }}>
+              <div className="button">Post comment</div>
+            </div>
           </div>
           <div className="stack">
             <div className="details" id="clickable">
@@ -133,10 +140,12 @@ function App() {
                 Receipt
               </div>
               {details.receipt && (
-                <div className="paragraph">
-                  <div className="button">View receipt</div>
+                <>
+                  <div className="button" style={{ marginBottom: "15px" }}>
+                    View receipt
+                  </div>
                   <div className="button">Resend receipt</div>
-                </div>
+                </>
               )}
             </div>
             <div
@@ -156,15 +165,17 @@ function App() {
                 Library
               </div>
               {details.library && (
-                <div className="paragraph">
-                  <div className="button">Archive from library</div>
+                <>
+                  <div className="button" style={{ marginBottom: "15px" }}>
+                    Archive from library
+                  </div>
                   <div
                     className="button"
                     style={{ backgroundColor: "#dc341e" }}
                   >
                     Delete permanently
                   </div>
-                </div>
+                </>
               )}
             </div>
           </div>
