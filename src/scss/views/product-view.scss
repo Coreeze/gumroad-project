@@ -29,22 +29,6 @@ header {
   }
 }
 
-.dropdown {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  top: calc(100% - 29rem);
-  gap: 1rem;
-  // width: 19rem;
-  background-color: $color-black;
-  box-shadow: 0.25rem 0.25rem 0rem $color-white;
-  border: solid 0.0625rem $color-light-grey;
-  border-radius: 0.25rem;
-  z-index: 30;
-}
-
 .content-container {
   display: grid;
   padding: 1rem;

@@ -24,8 +24,6 @@ function App() {
     receipt: false,
     library: false,
   });
-  const [showOpen, setShowOpen] = useState(false);
-  const [showDownload, setShowDownload] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -66,60 +64,10 @@ function App() {
       <header>
         <h1>Masterclass: How to be an amazing comedy MC</h1>
         <div className="header-actions">
-          <div
-            className="button"
-            onClick={() => (setShowOpen(!showOpen), setShowDownload(false))}
-          >
-            Open in app
-          </div>
-          <div
-            className="button"
-            onClick={() => (setShowDownload(!showDownload), setShowOpen(false))}
-          >
+          <div className="button">Open in app</div>
+          <div className="button">
             Download All <MdOutlineKeyboardArrowDown size={26} />
           </div>
-          {showDownload && (
-            <div className="dropdown">
-              <div
-                style={{
-                  display: "grid",
-                  gap: "23px",
-                  gridAutoFlow: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div className="button">
-                  <FaApple size={21} /> Download as ZIP
-                </div>
-                <div className="button" style={{ backgroundColor: "#142f40" }}>
-                  <FaAndroid size={15} />
-                  Save to Dropbox
-                </div>
-              </div>
-            </div>
-          )}
-          {showOpen && (
-            <div className="dropdown">
-              <h3>Gumroad Library</h3>
-              <div>Download from the App Store</div>
-              <div
-                style={{
-                  display: "grid",
-                  gap: "23px",
-                  gridAutoFlow: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div className="button">
-                  <FaApple size={21} /> App Store
-                </div>
-                <div className="button" style={{ backgroundColor: "#142f40" }}>
-                  <FaAndroid size={15} />
-                  Play Store
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </header>
       <div className="content-container">
@@ -172,12 +120,11 @@ function App() {
             </div>
           </div>
           <div className="stack">
-            <div
-              className="details"
-              id="clickable"
-              onClick={() => handleOpenDetails("receipt")}
-            >
-              <div className="details-header">
+            <div className="details" id="clickable">
+              <div
+                className="details-header"
+                onClick={() => handleOpenDetails("receipt")}
+              >
                 {details.receipt ? (
                   <MdOutlineKeyboardArrowRight size={22} />
                 ) : (
@@ -196,9 +143,11 @@ function App() {
               className="details"
               id="clickable"
               style={{ borderTop: "1px solid #646464" }}
-              onClick={() => handleOpenDetails("library")}
             >
-              <div className="details-header">
+              <div
+                className="details-header"
+                onClick={() => handleOpenDetails("library")}
+              >
                 {details.library ? (
                   <MdOutlineKeyboardArrowRight size={22} />
                 ) : (
