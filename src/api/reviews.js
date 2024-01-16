@@ -1,30 +1,47 @@
+import axios from "axios";
+
 const BASE_URL = process.env.REACT_APP_SERVER;
 
 const endpoints = {
-  default: "/api/reviews",
+  default: "/api/review",
   create: "/create",
   get: "/get",
 };
 
 export const createReview = async (data) => {
-  const response = await fetch(BASE_URL + endpoints.create, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const requestUrl = BASE_URL + endpoints.default + endpoints.create;
 
-  return await response.json();
+    var config = {
+      method: "post",
+      url: requestUrl,
+      data,
+    };
+
+    const response = await axios(config);
+
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
 };
 
-export const getReviews = async () => {
-  const response = await fetch(BASE_URL + endpoints.get, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export const getReview = async ({ productId }) => {
+  try {
+    const requestUrl =
+      BASE_URL + endpoints.default + endpoints.get + `?productId=${productId}`;
 
-  return await response.json();
+    var config = {
+      method: "get",
+      url: requestUrl,
+    };
+
+    const response = await axios(config);
+
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
 };

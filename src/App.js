@@ -7,44 +7,90 @@ import {
 import TextField from "@mui/material/TextField";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import ReactStars from "react-rating-stars-component";
+import ReactStars from "react-stars";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { COLORS } from "./utils/colors";
 import profile from "./images/ellie-horn.webp";
+import { mockData } from "./mockData";
+import { getReview, createReview } from "./api/reviews";
+import { SnackbarComponent } from "./components/SnackbarComponent";
 
 const feedbackValidationSchema = yup.object({
-  comment: yup.string("Enter comment").max(140, "Comment limited to 140 chars"),
+  comment: yup.string("Enter review").max(140, "Review limited to 140 chars"),
 });
 
 function App() {
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "",
+  });
   const [details, setDetails] = useState({
     receipt: false,
     library: false,
   });
 
+  const handleSnackbar = (message, severity) => {
+    setSnackbar({
+      open: true,
+      message: message,
+      severity: severity,
+    });
+  };
+
   const formik = useFormik({
     initialValues: {
       comment: "",
+      stars: null,
     },
     validationSchema: feedbackValidationSchema,
     onSubmit: (values) => handleFormSubmit(values),
   });
 
   useEffect(() => {
-    formik.handleSubmit();
-  }, [formik.values]);
+    const fetchData = async () => {
+      try {
+        const data = await getReview({ productId: mockData._id });
 
-  const handleFormSubmit = (values) => {
+        formik.setValues({
+          comment: data.data.comment,
+          stars: data.data.stars,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleFormSubmit = async (values) => {
     try {
-      console.log(values);
+      console.log("Saving...");
+      const response = await createReview({
+        productId: mockData._id,
+        comment: values.comment,
+        stars: values.stars,
+      });
+
+      handleSnackbar("Product successfully rated!", "success");
+      console.log(response);
     } catch (error) {
       console.log(error);
+      handleSnackbar("Error Saving Review", "error");
     }
   };
 
   const ratingChanged = (newRating) => {
-    console.log(newRating);
+    if (newRating !== formik.values.stars) {
+      formik.setValues({
+        ...formik.values,
+        stars: newRating,
+      });
+
+      formik.handleSubmit();
+    }
   };
 
   const handleOpenDetails = (name) => {
@@ -53,6 +99,7 @@ function App() {
 
   return (
     <div className="App">
+      <SnackbarComponent snackbar={snackbar} setSnackbar={setSnackbar} />
       <div className="top-bar">
         <div className="back-button">
           <FiArrowLeft size={14} />
@@ -60,7 +107,7 @@ function App() {
         </div>
       </div>
       <header>
-        <h1>Masterclass: How to be an amazing comedy MC</h1>
+        <h1>{mockData.title}</h1>
         <div className="header-actions">
           <div className="button">Open in app</div>
           <div className="button">
@@ -80,14 +127,13 @@ function App() {
               <ReactStars
                 count={5}
                 onChange={ratingChanged}
+                value={formik.values.stars}
                 size={24}
-                activeColor="#ffffff"
-                emptyIcon={<i className="far fa-star"></i>}
-                fullIcon={<i className="fa fa-star"></i>}
+                color2="#ffffff"
               />
             </div>
             <div className="ratings-comment">
-              <div>Love it? Give it a comment!</div>
+              <div>Love it? Give it a review!</div>
             </div>
             <div className="ratings-comment" style={{ paddingTop: "0px" }}>
               <TextField
@@ -141,7 +187,9 @@ function App() {
               </div>
             </div>
             <div style={{ padding: "0 1rem 1rem " }}>
-              <div className="button">Post comment</div>
+              <div className="button" onClick={() => formik.handleSubmit()}>
+                Post review
+              </div>
             </div>
           </div>
           <div className="stack">
@@ -198,15 +246,13 @@ function App() {
             </div>
           </div>
           <div className="stack">
-            <div className="description">
-              Masterclass: How to be an amazing comedy MC
-            </div>
+            <div className="description">{mockData.title}</div>
             <div
               className="description"
               style={{ borderTop: "1px solid #646464" }}
             >
               <img className="profile-pic" src={profile} />
-              By Ollie Horn
+              By {mockData.author}
             </div>
           </div>
         </div>
