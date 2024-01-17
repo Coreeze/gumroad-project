@@ -28,7 +28,11 @@ export const SnackbarComponent = ({ snackbar, setSnackbar }) => {
           backgroundColor:
             snackbar.severity === "success" ? COLORS.black : COLORS.white,
           border:
-            snackbar.severity === "success" && `1px solid ${COLORS.green}`,
+            snackbar.severity === "success"
+              ? `1px solid ${COLORS.green}`
+              : snackbar.severity === "warning"
+              ? `1px solid ${COLORS.orange}`
+              : `1px solid ${COLORS.red}`,
         }}
       >
         {snackbar.message}

@@ -68,6 +68,12 @@ function App() {
   const handleFormSubmit = async (values) => {
     try {
       console.log("Saving...");
+
+      if (!values.stars && values.comment) {
+        handleSnackbar("Cant post review without a star rating", "error");
+        return;
+      }
+
       const response = await createReview({
         productId: mockData._id,
         comment: values.comment,
@@ -75,7 +81,6 @@ function App() {
       });
 
       handleSnackbar("Product successfully rated!", "success");
-      console.log(response);
     } catch (error) {
       console.log(error);
       handleSnackbar("Error Saving Review", "error");
@@ -170,7 +175,7 @@ function App() {
                 <CircularProgress
                   variant="determinate"
                   color="secondary"
-                  value={(formik.values.comment.length * 100) / 141}
+                  value={(formik.values.comment?.length * 100) / 141}
                   style={{
                     color:
                       formik.values.comment.length <= 140
