@@ -26,7 +26,7 @@ export const SnackbarComponent = ({ snackbar, setSnackbar }) => {
           display: "flex",
           alignItems: "center",
           backgroundColor:
-            snackbar.severity === "success" ? COLORS.black : COLORS.white,
+            snackbar.severity === "success" ? COLORS.black : COLORS.black,
           border:
             snackbar.severity === "success"
               ? `1px solid ${COLORS.green}`
