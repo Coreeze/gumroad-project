@@ -1,0 +1,89 @@
+.auth-container {
+  display: grid;
+  grid-template-columns: 60.05vw auto;
+  height: 100%;
+  color: $color-white;
+  background-color: $color-grey;
+  overflow: hidden;
+
+  .background {
+    width: 50vw;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .logo {
+    height: 24px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .login-form {
+    overflow-y: auto;
+    //   width: 65vw;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    row-gap: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 0;
+    border: none;
+
+    .top-bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 4rem max((100% - 71.25rem)/2, 4rem);
+    background-color: $color-grey;
+  }
+
+  .divider {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 4rem max((100% - 71.25rem)/2, 4rem);
+    padding-bottom: 2rem;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 4rem max((100% - 71.25rem)/2, 4rem);
+    gap: 1.5rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    overflow: auto;
+
+    .background {
+      display: none;
+    }
+
+    .input-group {
+      padding: 4rem 1rem 0;
+    }
+
+    .divider {
+      padding: 3rem 1rem;
+    }
+
+    .form {
+      padding: 0 1rem 4rem;
+    }
+  }
+}

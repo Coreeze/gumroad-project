@@ -32,3 +32,14 @@
   cursor: pointer;
   font-size: 16px;
 }
+
+#login {
+  background-color: $color-white;
+  color: $color-black;
+
+  &:hover {
+    background-color: $color-pink;
+    transform: translate(-0.25rem, -0.25rem);
+    box-shadow: 0.25rem 0.25rem 0rem $color-white;
+  }
+}

@@ -1,10 +1,17 @@
 @import "./colors.scss";
 @import "./components/buttons.scss";
 @import "./views/product-view.scss";
+@import "./views/auth-view.scss";
 
 @font-face {
   font-family: "MabryPro";
   src: local("MabryPro"), url(../fonts/MabryPro-Light.ttf);
+}
+
+html {
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -15,6 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "MabryPro";
+  height: 100%;
 }
 
 .App {
