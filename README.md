@@ -28,3 +28,8 @@ Redux, Formik + Yup (for forms), MUI
 ## What I learned
 1. Gumroad was built very efficiently & focused on what matters: the front-end is simple, not overcomplicated.
    - This was an important lesson for me. PMF matters, not the tech stack.
+  
+## About me
+I'm a developer & founder (of [ooval](https://ooval.io)). I also contributed to research of [Self-Replicating Artificial Neural Networks](https://direct.mit.edu/artl/article/28/2/205/111793/Self-Replication-in-Neural-Networks).
+
+More about me: [crislenta.com](https://crislenta.com)
