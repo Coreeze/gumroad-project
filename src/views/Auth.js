@@ -57,6 +57,14 @@ function Auth() {
                   fontFamily: "MabryPro",
                   color: COLORS.white,
                 },
+                "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                  {
+                    borderColor: COLORS.lightGrey,
+                  },
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                  {
+                    borderColor: COLORS.pink,
+                  },
                 "& fieldset": {
                   borderRadius: "6px",
                   border: `1px solid ${COLORS.lightGrey}`,
@@ -104,6 +112,14 @@ function Auth() {
                   transition: ".2s ease-in-out all",
                   height: "52px",
                 },
+                "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+                  {
+                    borderColor: COLORS.lightGrey,
+                  },
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                  {
+                    borderColor: COLORS.pink,
+                  },
                 ".MuiFormHelperText-root.Mui-error": {
                   fontFamily: "MabryPro",
                   paddingBottom: "10px",
