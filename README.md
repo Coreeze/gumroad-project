@@ -1,7 +1,7 @@
 # Gumroad Engineering Challenge
 
 The new functionality I built for the Engineering Challenge is _Written Reviews_.
-- Reasoning: it is the most requested feature Gumroad is still missing (see [here](https://gumroad.nolt.io/201))
+- Reasoning: it is the most requested feature Gumroad is still missing (see [here](https://gumroad.nolt.io/top))
 
 ## How it works
 
