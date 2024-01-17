@@ -27,10 +27,13 @@ export const createReview = async (data) => {
   }
 };
 
-export const getReview = async ({ productId }) => {
+export const getReview = async ({ productId, user }) => {
   try {
     const requestUrl =
-      BASE_URL + endpoints.default + endpoints.get + `?productId=${productId}`;
+      BASE_URL +
+      endpoints.default +
+      endpoints.get +
+      `?productId=${productId}&user=${user}`;
 
     var config = {
       method: "get",

@@ -9,7 +9,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import ReactStars from "react-stars";
 import CircularProgress from "@mui/material/CircularProgress";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { COLORS } from "../utils/colors";
 import profile from "../images/ellie-horn.webp";
@@ -25,6 +25,8 @@ const feedbackValidationSchema = yup.object({
 
 function Product() {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.main.userData);
+
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
@@ -47,11 +49,11 @@ function Product() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getReview({ productId: mockData._id });
+        const data = await getReview({ productId: mockData._id, user });
 
         formik.setValues({
-          comment: data.data.comment,
-          stars: data.data.stars,
+          comment: data.data?.comment || "",
+          stars: data.data?.stars || null,
         });
       } catch (error) {
         console.log(error);
@@ -74,6 +76,7 @@ function Product() {
         productId: mockData._id,
         comment: values.comment,
         stars: values.stars,
+        user,
       });
 
       handleSnackbar("Product successfully rated!", "success");
