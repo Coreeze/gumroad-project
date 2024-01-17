@@ -22,6 +22,8 @@ Redux, Formik + Yup (for forms), MUI
 
 ## What I would have done better
 1. This is just an MVP. A clear missing addition is the _See all reviews_ functionality
+2. All pages are be mobile responsive, but I did no extensive checks.
+3. On the _See reviews_ page, I did not implement the black lines of the grid separating the blocks.
 
 ## What I learned
 1. Gumroad was built very efficiently & focused on what matters: the front-end is simple, not overcomplicated.
