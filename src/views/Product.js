@@ -9,18 +9,22 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import ReactStars from "react-stars";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useDispatch } from "react-redux";
 
 import { COLORS } from "../utils/colors";
 import profile from "../images/ellie-horn.webp";
 import { mockData } from "../mockData";
 import { getReview, createReview } from "../api/reviews";
 import { SnackbarComponent } from "../components/SnackbarComponent";
+import ScrollToTop from "../components/ScrollToTop";
+import { resetMainState } from "../store/mainReducer";
 
 const feedbackValidationSchema = yup.object({
   comment: yup.string("Enter review").max(140, "Review limited to 140 chars"),
 });
 
 function Product() {
+  const dispatch = useDispatch();
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
@@ -91,6 +95,10 @@ function Product() {
     });
   };
 
+  const handleLogOut = () => {
+    dispatch(resetMainState());
+  };
+
   const ratingChanged = (newRating) => {
     if (newRating !== formik.values.stars) {
       formik.setValues({
@@ -103,6 +111,7 @@ function Product() {
   };
   return (
     <div className="App">
+      <ScrollToTop />
       <SnackbarComponent snackbar={snackbar} setSnackbar={setSnackbar} />
       <div className="top-bar">
         <div className="back-button">
@@ -261,7 +270,7 @@ function Product() {
           </div>
         </div>
         <div className="paragraph">
-          <p>Here is the Zoom link!</p>
+          <p onClick={() => handleLogOut()}>Here is the Zoom link!</p>
 
           <p>https://zoom.us/j/91311756247</p>
           <p>

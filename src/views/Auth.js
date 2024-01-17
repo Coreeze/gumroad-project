@@ -6,10 +6,15 @@ import { TextField } from "@mui/material";
 import background from "../images/background-gumroad.webp";
 import gumroad from "../images/gumroad-text.png";
 import { COLORS } from "../utils/colors";
+import { useState } from "react";
+import ScrollToTop from "../components/ScrollToTop";
 
-function Auth() {
+function Auth({ handleUser }) {
+  const [email, setEmail] = useState("");
+
   return (
     <div className="auth-container">
+      <ScrollToTop />
       <div className="login-form">
         <header>
           <div className="top-bar">
@@ -49,6 +54,7 @@ function Auth() {
               name="comment"
               id="comment"
               className="comment"
+              onChange={(e) => setEmail(e.target.value)}
               sx={{
                 height: "47px",
                 borderRadius: "6px",
@@ -127,7 +133,7 @@ function Auth() {
               }}
             />
           </div>
-          <div className="button" id="login">
+          <div className="button" id="login" onClick={() => handleUser(email)}>
             Log in
           </div>
         </div>
