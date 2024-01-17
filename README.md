@@ -25,6 +25,8 @@ Redux, Formik + Yup (for forms), MUI
 2. All pages are be mobile responsive, but I did no extensive checks.
 3. On the _See reviews_ page, I did not implement the black lines of the grid separating the blocks.
 
+_Note: i didnt have enough time to check extensively for bugs. If any breaking bugs appear, please let me know._
+
 ## What I learned
 1. Gumroad was built very efficiently & focused on what matters: the front-end is simple, not overcomplicated.
    - This was an important lesson for me. PMF matters, not the tech stack.
