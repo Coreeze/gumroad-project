@@ -6,7 +6,7 @@ The new functionality I built for the Engineering Challenge is _Written Reviews_
 ## How it works
 
 1. Go to the [write review product](https://gumroad-write-review.vercel.app/) and "log in" by using just a username. The password field does not matter.
-2. Give it a star & if you want also write a comment
+2. Give it a star & write a comment
 3. Repeat with as many users as you want
    - to log out: the functionality is hidden under _Here is the Zoom link!_. Just click on it.
 5. Go to the [see review product page](https://gumroad-see-review.vercel.app/) and here you will see all the reviews
