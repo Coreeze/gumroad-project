@@ -22,8 +22,9 @@ Redux, Formik + Yup (for forms), MUI
 
 ## What I would have done better
 1. This is just an MVP. A clear missing addition is the _See all reviews_ functionality
-2. All pages are be mobile responsive, but I did no extensive checks.
+2. All pages are mobile responsive, but I did no extensive checks.
 3. On the _See reviews_ page, I did not implement the black lines of the grid separating the blocks.
+4. The `css` and some classes are not as clean, because at some point I hit the point of diminishing returns
 
 _Note: i didnt have enough time to check extensively for bugs. If any breaking bugs appear, please let me know._
 
